@@ -8,11 +8,11 @@
         <version>3.0.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example.onlineShop</groupId>
-    <artifactId>onlieShop</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>healthcare_managment</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>onlieShop</name>
-    <description>onlieShop</description>
+    <name>healthcare_managment</name>
+    <description>healthcare_managment</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -28,19 +28,15 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
@@ -64,11 +60,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -87,5 +78,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

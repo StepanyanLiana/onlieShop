@@ -1,6 +1,7 @@
 package com.example.onlineshop.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,16 +17,13 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     private final PasswordEncoder passwordEncoder;
     private final UserDetailsService userDetailsService;
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-
         httpSecurity.csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET,"/").permitAll()
                 .requestMatchers("/user/register").permitAll()
-                .requestMatchers("/categories/**").hasAnyAuthority("ADMIN", "USER")
-                .requestMatchers("/user/admin").hasAuthority("ADMIN")
+                .requestMatchers("/product").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -37,7 +35,6 @@ public class SecurityConfig {
                 .logout()
                 .logoutSuccessUrl("/")
                 .permitAll();
-
 
         return httpSecurity.build();
     }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Product</title>
+</head>
+<body>
+<h1>Add Product</h1>
+<form action="/product/add" method="post" enctype="multipart/form-data">
+  Title <input type="text" id="title" name="title"  required><br>
+
+  Price <input type="text" id="price" name="price"  required><br>
+
+  Description <textarea id="description" name="description"  required></textarea><br>
+
+  CategoryId <select  name="category_id" required>
+  <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+</select><br>
+  Picture <input type="file" name="image">
+  <button type="submit">Add Product</button>
+</form>
+</body>
+</html>

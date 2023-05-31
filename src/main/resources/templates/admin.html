@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div th:include="fragment/header::headerFragment">
+</div>
+<a href="/products">Product Page</a><br>
+<a href="/orders">Order Page</a>
+<a href="/user/register" th:if="${user==null}">Register</a>
+<a href="/customLogin" th:if="${user==null}">Login</a>
+</body>
+</html>

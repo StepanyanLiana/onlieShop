@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Cart</title>
+</head>
+<body>
+<h1>Cart</h1>
+<table>
+  <tr th:each="cart : ${carts}">
+    <td th:text="${cart.getProductList()}"></td>
+  </tr>
+</table>
+</body>
+</html>
