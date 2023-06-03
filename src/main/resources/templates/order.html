@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>order</title>
+</head>
+<body>
+<h1>Order</h1>
+<table border="1px">
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Product</th>
+        <th>Action</th>
+    </tr>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.dateTime}"></td>
+        <td th:text="${order.getProductList()}"></td>
+        <td><a th:href="@{/order/remove(id=${order.id})}">Buy</a>
+        </td>
+    </tr>
+    <div th:each="product : ${products1}">
+        <div th:text="${product.getTitle()}"></div>
+        <div th:text="${product.getPrice()}"></div>
+    </div>
+    </tbody>
+</table>
+</body>
+</html>

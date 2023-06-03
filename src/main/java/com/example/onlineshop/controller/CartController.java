@@ -8,10 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,8 +18,8 @@ public class CartController {
     private final CartService cartService;
     private final ProductService productService;
 
-    @PostMapping("/{productId}")
-    public String addProductToCart(@PathVariable int productId,
+    @PostMapping
+    public String addProductToCart(@RequestParam("id") int productId,
                                    @AuthenticationPrincipal CurrentUser currentUser) {
         cartService.save(currentUser, productId);
         return "redirect:/cart";

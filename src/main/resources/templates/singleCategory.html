@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Product Listing</title>
+  <title>categories</title>
 </head>
 <body>
-<h1>Product Listing</h1>
+<h1>Categories-products</h1>
 <ul>
   <li th:each="category : ${categories}">
     <a th:href="@{'/products?category=' + ${category.id}}" th:text="${category.name}">Category</a>
   </li>
 </ul>
-<table>
+<table border="1px">
   <thead>
   <tr>
     <th>Title</th>

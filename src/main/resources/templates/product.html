@@ -27,8 +27,8 @@
             <img th:if="${product.imgPath != null}" th:src="@{/getImage(imageName=${product.imgPath})}" alt="Product Image"width="100px">
         </td>
         <td>
-            <form th:action="@{/cart/add(id=${product.id})}" method="post">
-                <button type="submit">Add to Cart</button>
+            <form th:action="@{/cart(id=${product.id})}" method="post">
+                <button type="submit">Add to cart</button>
             </form>
         </td>
     </tr>
