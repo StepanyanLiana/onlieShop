@@ -1,8 +1,10 @@
 package com.example.onlineshop.service.impl;
 
 import com.example.onlineshop.entity.Order;
+import com.example.onlineshop.entity.Product;
 import com.example.onlineshop.repository.OrderRepository;
 import com.example.onlineshop.repository.ProductRepository;
+import com.example.onlineshop.security.CurrentUser;
 import com.example.onlineshop.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,6 @@ import java.util.List;
 public class OrdersServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
-    private final ProductRepository productRepository;
 
     @Override
     public List<Order> findAllOrder() {
@@ -32,4 +33,14 @@ public class OrdersServiceImpl implements OrderService {
     public void save(Order order) {
         orderRepository.save(order);
     }
+
+    @Override
+    public boolean save(CurrentUser currentUser, Product productId) {
+        Order order = new Order();
+        order.setUser(currentUser.getUser());
+        order.addProduct(productId);
+        orderRepository.save(order);
+        return false;
+    }
+
 }

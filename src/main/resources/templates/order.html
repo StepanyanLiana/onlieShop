@@ -21,10 +21,6 @@
         <td><a th:href="@{/order/remove(id=${order.id})}">Buy</a>
         </td>
     </tr>
-    <div th:each="product : ${products1}">
-        <div th:text="${product.getTitle()}"></div>
-        <div th:text="${product.getPrice()}"></div>
-    </div>
     </tbody>
 </table>
 </body>

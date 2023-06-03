@@ -7,7 +7,6 @@
 <h1>Categories-products</h1>
 <ul>
   <li th:each="category : ${categories}">
-    <a th:href="@{'/products?category=' + ${category.id}}" th:text="${category.name}">Category</a>
   </li>
 </ul>
 <table border="1px">
@@ -17,7 +16,7 @@
     <th>Price</th>
     <th>Description</th>
     <th>Category</th>
-    <th>Actions</th>
+    <th>action</th>
   </tr>
   </thead>
   <tbody>
@@ -26,9 +25,7 @@
     <td th:text="${product.price}"></td>
     <td th:text="${product.description}"></td>
     <td th:text="${product.category.name}"></td>
-    <td>
-      <a th:href="@{'/products/' + ${product.id}}">View Details</a>
-    </td>
+    <td><a th:href="@{/categories/remove(id=${product.id})}">Remove</a></td>
   </tr>
   </tbody>
 </table>

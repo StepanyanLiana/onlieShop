@@ -33,10 +33,9 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void save(CurrentUser currentUser, int productId) {
+    public boolean save(CurrentUser currentUser, int productId) {
         Optional<Product> optionalProduct = productRepository.findById(productId);
         Optional<Cart> optionalCart = cartRepository.findByUser(currentUser.getUser());
-
         if (optionalProduct.isPresent()){
             Product product = optionalProduct.get();
             Cart cart;
@@ -51,10 +50,16 @@ public class CartServiceImpl implements CartService {
             }
             cartRepository.save(cart);
         }
+        return false;
     }
 
     @Override
     public Cart findByUser(CurrentUser currentUser) {
         return cartRepository.findByUser(currentUser.getUser()).orElse(null);
+    }
+
+    @Override
+    public void delete(Product product) {
+        cartRepository.deleteById(product.getId());
     }
 }

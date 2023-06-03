@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -36,4 +37,10 @@ public class CategoryController {
         } else {
             return "redirect:/categories";
         }
-    }}
+    }
+    @GetMapping("/remove")
+    public String removePatient(@RequestParam("id") int id){
+        productRepository.deleteById(id);
+        return "redirect:/category";
+    }
+}

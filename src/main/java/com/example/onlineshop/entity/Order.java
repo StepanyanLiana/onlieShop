@@ -3,6 +3,8 @@ package com.example.onlineshop.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,4 +25,11 @@ public class Order {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     List<Product> productList;
+
+    public void addProduct(Product product){
+        if(productList == null){
+            productList = new ArrayList<>();
+        }
+        productList.add(product);
+    }
 }

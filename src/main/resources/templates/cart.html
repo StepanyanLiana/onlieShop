@@ -2,6 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Cart</title>
+  <style>
+    .active{
+      color: red;
+      font-size: 20px;
+    }
+    .pagination{
+      display: flex;
+      flex-direction: row;
+    }
+  </style>
 </head>
 <body>
 <h1>Cart</h1>
@@ -20,8 +30,18 @@
     </td>
     <td th:text="${product.getTitle()}"></td>
     <td th:text="${product.getPrice()}"></td>
-    <td><a href="/order" + ${cart.id}}>Buy</a></td>
+    <td> <form th:action="@{/order(id=${product.id})}" method="post">
+      <button type="submit">buy</button>
+    </form></td>
   </tr>
 </table>
+<div class="pagination">
+  <div th:if="${products.totalPages > 0}"
+       th:each="pageNumber : ${pageNumbers}">
+    <a th:href="@{/cart(size=${products.size}, page=${pageNumber})}"
+       th:text="${pageNumber}"
+       th:class="${pageNumber==products.number > 1} ? active"></a>
+  </div>
+</div>
 </body>
 </html>
